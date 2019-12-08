@@ -21,3 +21,7 @@ plot(newtime, df$Sub_metering_2, type = "l", ylab="Energy sub meeting",xlab="",c
 par(new = TRUE)
 plot(newtime, df$Sub_metering_3, type = "l", ylab="Energy sub meeting", xlab="",col = "blue",ylim = c(1,40))
 legend("topright",legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),col = c("black","red","blue"),lty = 1)
+
+# Copy this plot to 'plot3.png'
+dev.copy(png,"plot3.png",width = 480, height = 480)
+dev.off()

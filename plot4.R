@@ -11,7 +11,7 @@ df <- subset(df,df$Date == "1/2/2007" | df$Date == "2/2/2007")
 newdate <- strptime(as.character(df$Date), "%d/%m/%Y")
 df$Date <- lapply(newdate,function(x) format(x,"%Y-%m-%d"))
 
-# Now plot the data over the two day period with appropriate legend
+# Now superimpose plots over the two day period
 newtime <- as.POSIXct(paste(df$Date, df$Time), format="%Y-%m-%d %H:%M:%S")
 
 par(mfrow = c(2,2))
@@ -26,3 +26,7 @@ par(new=TRUE)
 plot(newtime, df$Sub_metering_3, type = "l", ylab ="Energy sub meeting", xlab="",col = "blue",ylim = c(1,40))
 
 plot(newtime, df$Global_reactive_power, type = "l", ylab = "Global_reactive_power",xlab = "datetime")
+
+# Copy this plot to 'plot4.png'
+dev.copy(png,"plot4.png",width = 480, height = 480)
+dev.off()
